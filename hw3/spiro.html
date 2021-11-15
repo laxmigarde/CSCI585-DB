@@ -1,0 +1,45 @@
+
+<!DOCTYPE html>
+
+<html>
+
+<head>
+</head> 
+
+<body>
+<canvas id="canvas" width="500" height="500" style="border:1px solid black;">
+</canvas>
+
+<script>
+
+  // Spirograph point generation
+  var canvas = document.getElementById("canvas");
+  var context = canvas.getContext("2d");
+  context.beginPath();
+  var R=8, r=1, a=4;
+  var x0=R+r-a, y0=0;
+  var nRev=16, pi = Math.PI;
+
+  context.moveTo(150+10*x0, 150+10*y0);
+
+  for(var t=0; t<(pi*nRev); t+=0.01){
+    var x = (R + r) * Math.cos((r/R)*t) - a * Math.cos((1+r/R)*t);
+    var y = (R + r) * Math.sin((r/R)*t) - a * Math.sin((1+r/R)*t);
+    context.lineTo(150+10*x, 150+10*y);
+    //document.write(x + ", " + y);
+    //document.write(x+", " +y);
+    // to reduce the scaling
+    x = x/5000;
+    y = y/5000;
+
+    // document.write(x + ", " + y);
+    var x_spiro = x + 34.02075751439069;
+    var y_spiro = y + (-118.2854253448301);
+
+  }
+  context.stroke();
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+<title>Open Layers HW</title>
+<script src="https://openlayers.org/api/OpenLayers.js">
+</script>
+<style>
+#map {
+    width:400px;
+    height:400px;
+}
+</style>
+</head>
+
+<body>
+<div id="map"></div>
+
+
+<script>
+console.log("HW3!");
+alert("HW3 Alert!!");
+
+
+var d = {"k1":[{"a":34.02079561940858, "b":-118.288999246309},
+               {"a":34.018611961910864, "b":-118.2855781597874},
+               {"a":34.02470454132185, "b":-118.288560605085},
+               {"a":34.02305997944613 , "b":-118.286258249574},
+               {"a":34.02217844004107 , "b":-118.2866553299484},
+               {"a":34.02008723287236 , "b":-118.2903170891546},
+               {"a":34.01993996106996 , "b":-118.282202018845},
+               {"a":34.02176766025603 , "b":-118.290729456429},
+               {"a":34.018626390795625 , "b":-118.28654482089},
+               {"a":34.020491549170394 , "b":-118.284333747541},
+               {"a":34.021722759583525 , "b":-118.288204729877},
+               {"a":34.02274365712791 , "b":-118.2884292156644},
+               {"a":34.02961699396593 , "b":-118.2900615601698}]
+           };
+
+
+localStorage.setItem("myData",JSON.stringify(d));
+// you'd need to modify the above, to store all your points
+
+
+// next presumably after closing the browser, and reloading our html
+// we can fetch the stored data, just by supplying its key
+var dataStored = JSON.parse(localStorage.getItem("myData"));
+// verify that we fetched our data correctly
+console.log(dataStored); 
+// we can iterate through our array [of points], like so:
+var a = dataStored.k1; // a will contain our array
+for(var indx in a) { // indx is 0,1,2...
+  console.log(a[indx]); // this could be a single point
+}
+
+// here's how to plot points on a map, using OpenLayers:
+// [this is code I mildly modified, from an existing source]
+function initMap() {
+        map = new OpenLayers.Map('map');
+        basemap = new OpenLayers.Layer.OSM("Simple OSM Map");
+        map.addLayer(basemap);
+        markers = new OpenLayers.Layer.Markers("Markers");
+        map.addLayer(markers);
+}// initMap()
+
+function addMarker(latitude, longitude) {
+        var lonLat = new OpenLayers.LonLat(longitude, latitude)
+            .transform(
+                new OpenLayers.Projection("EPSG:4326"), // transform from WGS 1984
+                map.getProjectionObject() // to Spherical Mercator Projection
+        );
+        var point = new OpenLayers.Marker(lonLat);
+        markers.addMarker(point);
+        map.setCenter(lonLat, 12); // second arg is zoom level
+        // console.log(latitude + ", " + longitude);
+} // addMarker()
+
+
+// load and setup map layers
+initMap();
+
+// plotting on map
+addMarker(34.02079561940858,-118.288999246309);
+addMarker(34.018611961910864,-118.2855781597874);
+addMarker(34.02470454132185,-118.288560605085);
+addMarker(34.02305997944613,-118.286258249574);
+addMarker(34.02217844004107,-118.2866553299484);
+addMarker(34.02008723287236,-118.2903170891546);
+addMarker(34.01993996106996,-118.282202018845);
+addMarker(34.02176766025603,-118.290729456429);
+addMarker(34.018626390795625,-118.28654482089);
+addMarker(34.020491549170394,-118.284333747541);
+addMarker(34.021722759583525,-118.288204729877);
+addMarker(34.02274365712791,-118.2884292156644);
+addMarker(34.02961699396593,-118.2900615601698);
+
+</script>
+
+</body>
+
+</html>
