@@ -51,7 +51,7 @@ Query used on the map/chart:
        $geoWithin: { $polygon: [ [  -116.15907084356105 , 33.98096522850808 ], [-107.89027837388127, 34.91493770120391], [ -112.49490593840095 , 41.63074261463882 ] ] }
 }}
 
-Screenshot available with the name: Q5.png, Q5_1.png, Q5_2.png(plot for all NPS data screenshot)
+Screenshot available with the name: Q5.png, Q5_1.png, Q5_2.png(plot for all NPS data screenshot), Q5_triangle.png
 
 =======================================
 
