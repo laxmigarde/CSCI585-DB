@@ -29,6 +29,10 @@ Screenshot available with the name: Q2.png
 
 Q3. Write a query in the chart area where you would specify a bounding box (lower-left location, upper-right location) to display just the northern half of your 13 locations. Take a screenshot of the query and the result.
 
+Datasource: HW4DB.HW3Data
+Chart Type: Scatter chart
+Screenshot available with the name: Q3.png
+
 
 =======================================
 
