@@ -1,1 +1,1 @@
-# cs-585-homeworks
+# CSCI 585 Database Systems Coursework
